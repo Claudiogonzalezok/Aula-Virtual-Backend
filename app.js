@@ -18,7 +18,7 @@ const courseRoutes = require('./routes/course.routes');
 app.use('/api/courses', courseRoutes);
 //Ruta para clases
 const classRoutes = require('./routes/class.routes');
-app.use('/api/classes', classRoutes);
+app.use('/api/courses', courseRoutes);
 
 
 // Start
