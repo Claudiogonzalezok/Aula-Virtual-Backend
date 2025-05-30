@@ -20,6 +20,9 @@ app.use('/api', require('./routes/class.routes')); // Ya actualizada como te mos
 
 //const courseRoutes = require('./routes/course.routes');
 //app.use('/api/courses', courseRoutes);
+const userRoutes = require('./routes/user.routes');
+app.use('/api/users', userRoutes);
+
 
 
 // Start server
