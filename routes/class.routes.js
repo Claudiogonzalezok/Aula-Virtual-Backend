@@ -5,7 +5,7 @@ const verifyToken = require('../middlewares/authMiddleware');
 const checkRole = require('../middlewares/checkRole');
 
 // Crear una clase
-router.post('/:courseId/classes', verifyToken, checkRole(['admin', 'professor']), classController.createClass);
+router.post('/classes', verifyToken, checkRole(['admin']), classController.createClass);
 
 
 // Obtener clases de un curso específico
@@ -15,9 +15,9 @@ router.post('/:courseId/classes', verifyToken, checkRole(['admin', 'professor'])
 router.get('/:courseId/classes', verifyToken, classController.getClassesByCourse);
 
 // Actualizar clase
-router.put('/:courseId/classes/:id', verifyToken, checkRole(['admin', 'professor']), classController.updateClass);
+router.put('/classes/:id', verifyToken, checkRole(['admin']), classController.updateClass);
 
 // Eliminar clase
-router.delete('/:courseId/classes/:id', verifyToken, checkRole(['admin', 'professor']), classController.deleteClass);
+router.delete('/classes/:id', verifyToken, checkRole(['admin']), classController.deleteClass);
 
 module.exports = router;

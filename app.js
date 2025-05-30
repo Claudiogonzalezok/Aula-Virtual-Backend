@@ -16,7 +16,7 @@ app.use(express.json());
 app.use('/api/auth', require('./routes/auth.routes'));
 app.use('/api/private', require('./routes/private.routes'));
 app.use('/api/courses', require('./routes/course.routes'));
-app.use('/api/courses', require('./routes/class.routes')); // Ya actualizada como te mostré antes
+app.use('/api', require('./routes/class.routes')); // Ya actualizada como te mostré antes
 
 //const courseRoutes = require('./routes/course.routes');
 //app.use('/api/courses', courseRoutes);
