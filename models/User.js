@@ -10,6 +10,7 @@ const userSchema = new mongoose.Schema({
     enum: ['student', 'teacher', 'admin'],
     default: 'student',
   },
+  courses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }],
 }, { timestamps: true });
 
 userSchema.pre('save', async function (next) {

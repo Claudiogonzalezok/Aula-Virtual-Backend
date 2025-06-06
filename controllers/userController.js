@@ -37,11 +37,12 @@ const { name, email, role, password } = req.body;
 };
 
 exports.updateUser = async (req, res) => {
+  console.log('📦 BODY RECIBIDO:', req.body);
   try {
     const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true }).select('-password');
     res.json(user);
   } catch (error) {
-    res.status(400).json({ message: 'Error al actualizar usuario' });
+    res.status(400).json({ message: 'Error al actualizar usuario opa' });
   }
 };
 
@@ -51,5 +52,32 @@ exports.deleteUser = async (req, res) => {
     res.json({ message: 'Usuario eliminado' });
   } catch (error) {
     res.status(400).json({ message: 'Error al eliminar usuario' });
+  }
+};
+
+// controllers/userController.js
+//const User = require('../models/User');
+
+exports.assignCourses = async (req, res) => {
+  console.log('📦 BODY RECIBIDO:', req.body); // 👈 Esto es lo más importante ahora
+
+  const { userId, courseIds } = req.body;
+
+  if (!userId || !Array.isArray(courseIds)) {
+    console.log('⚠️ Datos inválidos:', { userId, courseIds });
+    return res.status(400).json({ message: 'Datos inválidos. userId y courseIds deben estar presentes y courseIds debe ser un array.' });
+  }
+
+  try {
+    const user = await User.findByIdAndUpdate(
+      userId,
+      { $set: { courses: courseIds } },
+      { new: true }
+    ).populate('courses');
+
+    res.json({ message: 'Cursos asignados correctamente', user });
+  } catch (error) {
+    console.error('❌ Error interno:', error);
+    res.status(500).json({ message: 'Error al asignar cursos', error });
   }
 };
