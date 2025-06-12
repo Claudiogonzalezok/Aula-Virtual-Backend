@@ -22,10 +22,9 @@ app.use((req, res, next) => {
 
 
 // Routes
-const userRoutes = require('./routes/user.routes');
-app.use('/api/users', userRoutes);
-
+//const userRoutes = require('./routes/user.routes');
 app.use('/api/auth', require('./routes/auth.routes'));
+app.use('/api/users',  require('./routes/user.routes'));
 app.use('/api/private', require('./routes/private.routes'));
 app.use('/api/courses', require('./routes/course.routes'));
 app.use('/api', require('./routes/class.routes')); // Ya actualizada como te mostré antes

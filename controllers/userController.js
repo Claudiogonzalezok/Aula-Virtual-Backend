@@ -10,7 +10,7 @@ exports.getAllUsers = async (req, res) => {
     res.status(500).json({ message: 'Error al obtener usuarios' });
   }
 };
-
+{/*
 exports.createUser = async (req, res) => {
 const { name, email, role, password } = req.body;
 
@@ -35,7 +35,7 @@ const { name, email, role, password } = req.body;
   await user.save();
   res.status(201).json({ message: 'Usuario creado correctamente', user });
 };
-
+*/}
 exports.updateUser = async (req, res) => {
   console.log('📦 BODY RECIBIDO:', req.body);
   try {
