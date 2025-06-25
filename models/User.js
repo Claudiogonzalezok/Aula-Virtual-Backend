@@ -11,6 +11,9 @@ const userSchema = new mongoose.Schema({
     default: 'student',
   },
   courses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }],
+  resetToken: { type: String },
+  resetTokenExpires: { type: Date },
+
 }, { timestamps: true });
 
 userSchema.pre('save', async function (next) {

@@ -8,6 +8,7 @@ const morgan = require('morgan');
 dotenv.config();
 const app = express();
 connectDB();
+const path = require("path");
 
 // Middlewares
 app.use(cors());
@@ -29,6 +30,9 @@ app.use('/api/private', require('./routes/private.routes'));
 app.use('/api/courses', require('./routes/course.routes'));
 app.use('/api', require('./routes/class.routes')); // Ya actualizada como te mostré antes
 
+app.use('/api', require('./routes/uploads'));
+// Servir archivos desde la carpeta uploads
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
 // Start server
